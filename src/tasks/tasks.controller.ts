@@ -1,3 +1,4 @@
+import { ConfigService } from './../config/config.service';
 import { TaskFilterDto } from './dto/taskFilter';
 import { CreateTaskDto } from './dto/createTasks';
 import { Task, TaskStatus } from './tasks.model';
@@ -7,16 +8,21 @@ import { TaskStatusValdationPipe } from './pipes/task-status-validation.pipes';
 
 @Controller('tasks')
 export class TasksController {
-    constructor(private taskServise: TasksService) { }
+    constructor(private taskServise: TasksService, private configService: ConfigService) {
+        console.log('asdasdsadsad');
+
+        console.log(this.configService.get('MONGO_URL'))
+    }
+
 
     @Get()
-    getTasks(@Query() filterDto: TaskFilterDto): Task[] {
-        if(Object.keys(filterDto).length){
+    getTasks(@Query(ValidationPipe) filterDto: TaskFilterDto): Task[] {
+        if (Object.keys(filterDto).length) {
             return this.taskServise.getTasksByFilter(filterDto)
-        }else{
+        } else {
             return this.taskServise.getTasks();
         }
-            
+
     }
 
     @Post()
@@ -38,7 +44,7 @@ export class TasksController {
 
     @Patch('/:id/status')
     updateStatusById(
-        @Param('id') id: string, 
+        @Param('id') id: string,
         @Body('status', TaskStatusValdationPipe) status: TaskStatus): Task {
         return this.taskServise.updateStatusById(id, status)
     }
