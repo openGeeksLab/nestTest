@@ -9,9 +9,9 @@ import { TaskStatusValdationPipe } from './pipes/task-status-validation.pipes';
 @Controller('tasks')
 export class TasksController {
     constructor(private taskServise: TasksService, private configService: ConfigService) {
-        console.log('asdasdsadsad');
+        console.log('asd');
 
-        console.log(this.configService.get('MONGO_URL'))
+        console.log(this.configService.get('mongoUrl'))
     }
 
 
