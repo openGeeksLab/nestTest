@@ -8,12 +8,7 @@ import { TaskStatusValdationPipe } from './pipes/task-status-validation.pipes';
 
 @Controller('tasks')
 export class TasksController {
-    constructor(private taskServise: TasksService, private configService: ConfigService) {
-        console.log('asd');
-
-        console.log(this.configService.get('mongoUrl'))
-    }
-
+    constructor(private taskServise: TasksService, private configService: ConfigService) { }
 
     @Get()
     getTasks(@Query(ValidationPipe) filterDto: TaskFilterDto): Task[] {
