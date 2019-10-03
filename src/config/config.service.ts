@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 
-export class ConfigServise {
+export class ConfigService {
     private readonly envConfig: { [key: string]: string };
 
     constructor(filePath: string) {
