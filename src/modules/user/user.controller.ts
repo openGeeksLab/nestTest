@@ -2,9 +2,8 @@ import {
     Controller,
     Post,
     Body,
-    ValidationPipe ,
-    UsePipes,
     Get,
+    BadRequestException,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserDto } from '../../dto/user.dto';
@@ -14,7 +13,14 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create(@Body() userTdo: UserDto): Promise<UserDto> {
+  async create(@Body() userTdo: UserDto): Promise<UserDto> {
+    const { email } = userTdo ;
+    const userMailExist = await this.userService.findOne({ email });
+
+    if (userMailExist) {
+      throw new BadRequestException();
+    }
+
     return this.userService.create(userTdo);
   }
 
