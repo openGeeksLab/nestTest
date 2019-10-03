@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { TasksModule } from './tasks/tasks.module';
+import { TasksModule } from './modules/tasksToDelete/tasks.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
-import { UserModule } from './user/user.module';
+import { UserModule } from './modules/user/user.module';
 
 const MongooseArgs = {
   imports: [ConfigModule],

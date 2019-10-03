@@ -1,4 +1,4 @@
-import { ConfigService } from './../config/config.service';
+import { ConfigService } from '../../config/config.service';
 import { TaskFilterDto } from './dto/taskFilter';
 import { CreateTaskDto } from './dto/createTasks';
 import { Task, TaskStatus } from './tasks.model';
@@ -20,7 +20,6 @@ export class TasksController {
   }
 
   @Post()
-    @UsePipes(ValidationPipe)
     createTask(@Body() createTaskDto: CreateTaskDto): Task {
     return this.taskServise.createTask(createTaskDto);
   }

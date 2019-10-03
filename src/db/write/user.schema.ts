@@ -1,6 +1,7 @@
 import { Schema } from 'mongoose';
+import { extendSchema } from '../../utils/extend.shema.util';
 
-export const UserSchema = new Schema({
+export const UserSchema = extendSchema({
   email: {
     type: String,
     required: true,

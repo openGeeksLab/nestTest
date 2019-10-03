@@ -8,7 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
 
   app.use(helmet());
-  // TODO: move to config
+
   app.use(
     rateLimit({
       windowMs: 15 * 60 * 1000, // 15 minutes

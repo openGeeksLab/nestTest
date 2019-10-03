@@ -4,17 +4,22 @@ import {
     Body,
     ValidationPipe ,
     UsePipes,
+    Get,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { UserDto } from './dto/user.dto';
+import { UserDto } from '../../dto/user.dto';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create(@Body() userTdo: UserDto) {
-    console.log('userTdo', userTdo);
+  create(@Body() userTdo: UserDto): Promise<UserDto> {
     return this.userService.create(userTdo);
+  }
+
+  @Get()
+  getAll() {
+    return this.userService.findOne();
   }
 }

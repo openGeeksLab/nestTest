@@ -1,6 +1,10 @@
 import { Schema } from 'mongoose';
+import dbStandartField from '../component/db.standart.field';
 
-export const extendSchema = (OriginalSchema: Object, definition: Object, options: Object): Schema => {
+export const extendSchema = (
+  OriginalSchema: Object,
+  definition: Object= dbStandartField,
+  options: Object= {}): Schema => {
   return new Schema(
         { ...OriginalSchema, ...definition },
         options,
