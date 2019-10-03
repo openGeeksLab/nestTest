@@ -1,1 +1,1 @@
-//Here define all operations over bd
+// Here define all operations over bd

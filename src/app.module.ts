@@ -11,12 +11,15 @@ const MongooseArgs = {
     uri: configService.get('MONGO_URL'),
     autoIndex: false,
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   }),
-  inject: [ConfigService]
-}
+  inject: [ConfigService],
+};
 
 @Module({
-  imports: [TasksModule, MongooseModule.forRootAsync(MongooseArgs), UserModule],
+  imports: [
+    TasksModule,
+    UserModule,
+    MongooseModule.forRootAsync(MongooseArgs), UserModule],
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 {
   "defaultSeverity": "error",
   "extends": [
-    "tslint:recommended"
+    "tslint-config-airbnb"
   ],
   "jsRules": {
     "no-unused-expression": true
@@ -32,7 +32,9 @@
     "semicolon": [
       true,
       "always"
-    ]
+    ],
+    "no-console": [true, "log", "error"],
+    "variable-name":false
   },
   "rulesDirectory": []
 }
