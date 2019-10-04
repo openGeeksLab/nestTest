@@ -1,13 +1,13 @@
-import { UserModelWrite } from './../../models/write/user/user.module';
-import { UserSchema } from '../../db/write/user.schema';
+import { UserSchema } from './user.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Module } from '@nestjs/common';
 import { UserService } from './user.service';
+import { UserRepository } from './user.repository';
 import { UserController } from './user.controller';
 
 @Module({
-  imports: [UserModelWrite],
+  imports: [MongooseModule.forFeature([{ name: 'User', schema: UserSchema }])],
   controllers:[UserController],
-  providers: [UserService],
+  providers: [UserService, UserRepository],
 })
 export class UserModule { }

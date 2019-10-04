@@ -1,4 +1,3 @@
-import { Schema } from 'mongoose';
 import { extendSchema } from '../../utils/extend.shema.util';
 
 export const UserSchema = extendSchema({

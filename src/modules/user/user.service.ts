@@ -1,12 +1,12 @@
-import { UserWrite } from './../../models/write/user/user.write';
+import { UserRepository } from './user.repository';
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 
-import { UserDto } from '../../dto/user.dto';
+import { UserDto } from './dto/user.dto';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly userModel: UserWrite) { }
+  constructor(private readonly userModel: UserRepository) { }
 
   create(userData: UserDto): Promise<UserDto> {
     return this.userModel.create(userData);
