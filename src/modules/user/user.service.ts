@@ -1,6 +1,6 @@
 import { UserRepository } from './user.repository';
 import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 
 import { UserDto } from './dto/user.dto';
 
@@ -8,7 +8,13 @@ import { UserDto } from './dto/user.dto';
 export class UserService {
   constructor(private readonly userModel: UserRepository) { }
 
-  create(userData: UserDto): Promise<UserDto> {
+  async create(userData: UserDto): Promise<UserDto> {
+    // const { email } = userData ;
+    // const userMailExist = await this.userService.findOne({ email });
+
+    // if (userMailExist) {
+    //   throw new BadRequestException();
+    // }
     return this.userModel.create(userData);
   }
 
@@ -21,4 +27,4 @@ export class UserService {
   }
 }
 
-// TODO:  actions here
+// here can handle exceptions

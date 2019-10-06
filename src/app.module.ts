@@ -9,9 +9,7 @@ const MongooseArgs = {
   imports: [ConfigModule],
   useFactory: async (configService: ConfigService) => ({
     uri: configService.get('MONGO_URL'),
-    autoIndex: false,
     useNewUrlParser: true,
-    useUnifiedTopology: true,
   }),
   inject: [ConfigService],
 };

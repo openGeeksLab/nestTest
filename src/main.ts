@@ -16,11 +16,6 @@ async function bootstrap() {
     }),
   );
 
-  // whiteList pick props from body based on DTO
-  app.useGlobalPipes(new ValidationPipe({
-    whitelist: true,
-  }));
-
   await app.listen(3000);
 }
 
